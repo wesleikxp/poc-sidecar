@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Arquivos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <header class="upload-header">
+        <div class="container">
+            <nav class="d-flex justify-content-between align-items-center">
+                <a href="/" class="text-white text-decoration-none fs-5 fw-bold">
+                    <i class="bi bi-house-door-fill"></i> Home
+                </a>
+                <a href="/logout" class="btn btn-outline-light text-decoration-none">
+                    <i class="bi bi-box-arrow-right"></i> Sair
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container upload-container">
+        <h1 class="text-center mb-4">
+            <i class="bi bi-cloud-arrow-up"></i> Enviar Novo Arquivo
+        </h1>
+        
+        <form method="post" enctype="multipart/form-data" class="mb-5">
+            <div class="upload-area">
+                <i class="bi bi-file-earmark-arrow-up" style="font-size: 3rem; color: #0d6efd;"></i>
+                <h5 class="my-3">Arraste e solte seu arquivo aqui ou</h5>
+                
+                <div class="d-flex justify-content-center">
+                    <label for="fileInput" class="custom-file-label me-2">
+                        <i class="bi bi-folder2-open"></i> Selecionar Arquivo
+                    </label>
+                    <input id="fileInput" type="file" name="file" class="custom-file-input" required>
+                    
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-upload"></i> Upload
+                    </button>
+                </div>
+                
+                <div class="file-info" id="fileName">
+                    Nenhum arquivo selecionado
+                </div>
+            </div>
+        </form>
+
+        <hr>
+        
+        <h2 class="text-center mb-4">
+            <i class="bi bi-clock-history"></i> Últimos Uploads
+        </h2>
+        
+        {% if uploads %}
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Nome do Arquivo</th>
+                            <th>Data/Hora do Upload</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for upload in uploads %}
+                        <tr>
+                            <td>
+                                <i class="bi bi-file-earmark"></i> {{ upload.filename }}
+                            </td>
+                            <td>{{ upload.upload_time }}</td>
+                            <td class="status-{{ upload.status|lower }}">
+                                <i class="bi 
+                                    {% if upload.status == 'APPROVED' %}bi-check-circle-fill
+                                    {% elif upload.status == 'PENDING' %}bi-hourglass-split
+                                    {% else %}bi-x-circle-fill{% endif %}">
+                                </i> 
+                                {{ upload.status }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center">
+                <i class="bi bi-info-circle-fill"></i> Nenhum upload recente encontrado.
+            </div>
+        {% endif %}
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mostrar nome do arquivo selecionado
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : 'Nenhum arquivo selecionado';
+            document.getElementById('fileName').textContent = fileName;
+        });
+    </script>
+        <footer class="text-center mt-5">
+        <p>&copy; 2023 Sidecar Manager</p>
+    </footer>
+</body>
+</html>
