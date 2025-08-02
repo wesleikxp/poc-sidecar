@@ -1,0 +1,111 @@
+body {
+    background-color: #f8f9fa;
+    padding-bottom: 50px;
+}
+.upload-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.upload-header {
+    background-color: #0d6efd;
+    color: white;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+.upload-area {
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: all 0.3s;
+}
+.upload-area:hover {
+    border-color: #0d6efd;
+    background-color: #f8f9fa;
+}
+.custom-file-input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+.custom-file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.custom-file-label:hover {
+    background-color: #0b5ed7;
+}
+.file-info {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+.table-responsive {
+    margin-top: 30px;
+}
+.status-approved {
+    color: #198754;
+}
+.status-pending {
+    color: #ffc107;
+}
+.status-rejected {
+    color: #dc3545;
+}
+ /* Estilo específico para o iframe do shell */
+.shell-container {
+    flex-grow: 1; /* Permite que o container ocupe o espaço disponível */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px; /* Ajuste conforme necessário */
+    margin: 20px auto;
+    background-color: #2b2b2b; /* Cor de fundo para o iframe */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.shell-container h1 {
+    color: white;
+    padding: 15px;
+    margin: 0;
+    background-color: #333;
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+
+#ttyd-iframe {
+    width: 100%;
+    flex-grow: 1; /* Faz o iframe preencher o espaço restante */
+    min-height: 600px; /* Altura mínima para o terminal */
+    border: none;
+    overflow: hidden;
+}
+pre { 
+    background-color: #2b2b2b; 
+    padding: 15px; border-radius: 5px; 
+    overflow-x: auto; 
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
+    color:#f8f9fa 
+}
+h1 { 
+    color: #2b2b2b; 
+}
+a { 
+    color: #8ab4f8; 
+    text-decoration: none; 
+}
+a:hover {     
+    text-decoration: underline; 
+}

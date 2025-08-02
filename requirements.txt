@@ -1,0 +1,5 @@
+Flask 
+Flask-Login 
+Werkzeug 
+paramiko 
+pysftp # pysftp é um wrapper de alto nível para Paramiko, pode ser útil
