@@ -11,17 +11,41 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-color: #f8f9fa;
+            background-color: #f0f1f1;
         }
         .main-header {
-            background-color: #0d6efd;
+            background-color: #3b4d61;
             padding: 1rem 0;
-            color: white;
+            color: #f0f1f1;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         footer {
             margin-top: auto;
         }
+          .btn-cyan-personalizado {
+    background-color: #34bba9;
+    border-color: #34bba9;
+    color: #ffffff; /* Cor do texto para garantir contraste */
+  }
+
+  /* Efeito de hover para o botão */
+  .btn-cyan-personalizado:hover {
+    background-color: #2da091; /* Um tom um pouco mais escuro para o efeito */
+    border-color: #2da091;
+    color: #ffffff;
+  }
+    .btn-personalizado {
+    background-color: #1e2731;
+    border-color: #1e2731;
+    color: #f0f1f1;
+  }
+
+  /* Efeito de hover para o botão */
+  .btn-personalizado:hover {
+    background-color: #3b4d61;
+    border-color: #3b4d61;
+    color: #f0f1f1;
+  }
     </style>
 </head>
 <body>
@@ -53,7 +77,7 @@
         {% endwith %}
 
         <div class="card shadow-lg mx-auto" style="max-width: 600px;">
-            <div class="card-header bg-success text-white text-center py-3">
+            <div class="card-header text-white text-center py-3" style="background-color: #34bba9;">
                 <h4 class="mb-0"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Upload de Arquivos</h4>
             </div>
             <div class="card-body p-4">
@@ -64,11 +88,18 @@
                         <input class="form-control" type="file" id="file" name="file" required>
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-success btn-lg">
+                        <button type="submit" class="btn btn-cyan-personalizado btn-lg">
                             <i class="bi bi-upload me-2"></i>Upload
                         </button>
                     </div>
                 </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-5">
+                <button class="btn btn-personalizado mt-4" onclick="window.location.href='{{ url_for('index') }}'">
+                    <i class="bi bi-arrow-left"></i> Voltar
+                </button>
             </div>
         </div>
 
