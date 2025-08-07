@@ -1,7 +1,7 @@
 import os
 import subprocess
 import threading
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -198,6 +198,10 @@ def index():
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     return render_template('index.html')
+
+@app.route('/health')
+def health_check():
+    return jsonify({"status": "healthy"}), 200
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
